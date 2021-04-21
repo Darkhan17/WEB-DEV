@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilmDetailComponent
+    FilmDetailComponent,
+    TopBarComponent
   ],
   imports: [
     BrowserModule,
