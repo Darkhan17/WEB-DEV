@@ -1,0 +1,16 @@
+app-top-bar {
+  position: sticky;
+  z-index: 210;
+  width: 100%;
+  max-width: 1280px;
+  min-width: 980px;
+  margin: auto;
+  height: 57px;
+  background-color: #303030;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: hsla(0, 0%, 100%, .8);
+}
+

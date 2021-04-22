@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 @NgModule({
+  declarations: [
+    AppComponent,
+    FilmDetailComponent,
+    TopBarComponent
+  ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      { path: 'films/:filmId', component: FilmDetailComponent},
-    ])
+    AppRoutingModule
   ],
-  declarations: [
-    AppComponent
-  ],
-  bootstrap: [
-    AppComponent
-  ],
-  providers: []
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
