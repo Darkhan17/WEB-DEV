@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import {MainContainerComponent} from './main-container/main-container.component';
+import { FilmsListComponent } from './films-list/films-list.component';
+
 
 @NgModule({
   imports: [
     BrowserModule,
     RouterModule.forRoot([
       { path: '', component: MainContainerComponent},
+      {path: 'films', component: FilmsListComponent},
       { path: 'films/:filmId', component: FilmDetailComponent},
     ])
   ],
@@ -21,6 +24,7 @@ import {MainContainerComponent} from './main-container/main-container.component'
     TopBarComponent,
     FilmDetailComponent,
     MainContainerComponent,
+    FilmsListComponent,
   ],
   bootstrap: [
     AppComponent
