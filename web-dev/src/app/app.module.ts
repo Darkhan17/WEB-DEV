@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
-import {MainContainerComponent} from "./main-container/main-container.component";
+import {MainContainerComponent} from './main-container/main-container.component';
 
 @NgModule({
   imports: [
