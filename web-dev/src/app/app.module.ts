@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {RouterModule} from "@angular/router";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,16 +7,12 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import {MainContainerComponent} from './main-container/main-container.component';
 import { FilmsListComponent } from './films-list/films-list.component';
-
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot([
-      { path: '', component: MainContainerComponent},
-      {path: 'films', component: FilmsListComponent},
-      { path: 'films/:filmId', component: FilmDetailComponent},
-    ])
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
@@ -25,6 +20,7 @@ import { FilmsListComponent } from './films-list/films-list.component';
     FilmDetailComponent,
     MainContainerComponent,
     FilmsListComponent,
+    AuthComponent,
   ],
   bootstrap: [
     AppComponent

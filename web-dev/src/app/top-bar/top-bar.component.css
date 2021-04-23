@@ -3,7 +3,6 @@
   src: url(fonts/GrandHotel-Regular.otf);
 }
 
-
 .topMenu__logo {
   font-family: Pompadur, serif;
   font-size: 30px;
@@ -15,7 +14,9 @@
   color: hsla(0, 0%, 100%, .8);
   cursor: pointer;
 }
-
+.topMenu__logo:hover {
+  color: #ff5032;
+}
 ul {
   list-style: none;
   margin: 0;
@@ -26,6 +27,10 @@ li {
   display: inline;
   margin: 7px 10px 0;
   font-size: 14px;
+  cursor: pointer;
+}
+li:hover {
+  color: #ff5032;
 }
 
 body {
@@ -45,10 +50,18 @@ body {
   background-size: 65%;
   margin-right: 50px;
 }
+.logo:hover{
+  width: 35px;
+  height: 35px;
+}
 
 #notify-logo {
   opacity: .65;
   background: url(https://images.kinorium.com/web/svg/icon_32_nav_notification_bell.svg?v=4) -1px -97px;
+}
+#notify-logo:hover {
+  background: url(https://images.kinorium.com/web/svg/icon_32_nav_notification_bell.svg?v=4) -3px -117px;
+  background-size: 110%;
 }
 #search{
   margin-left: auto;
@@ -64,4 +77,27 @@ body {
 }
 #search::placeholder{
   color: hsla(0, 0%, 100%, 0.6);
+}
+.auth_button {
+  float: right;
+  width: auto;
+  line-height: 32px;
+  font-size: 14px;
+  padding: 0 16px;
+  margin: 0 50px 0 10px;
+  height: 32px;
+  border-radius: 16px;
+}
+.bluebutton {
+  background: linear-gradient(
+    90deg
+    ,#22d9c8 20%,#2299d9)!important;
+  color: #fff!important;
+  border: none!important;
+  cursor: pointer;
+}
+.bluebutton:hover, .bluebutton:focus {
+  background: linear-gradient(
+    90deg
+    ,#59e2d5 40%,#59b2e2)!important;
 }
