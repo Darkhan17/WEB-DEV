@@ -21,10 +21,25 @@ export class FilmDetailComponent implements OnInit {
       world_premiere?: undefined; usa_premiere?: undefined; ru_premiere?: undefined; other_name?: undefined; genres?: undefined; video?: undefined;
   } | undefined;
   status = 'film';
+  loaded!: boolean;
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     const filmIdFromRoute = Number(routeParams.get('filmId'));
     this.film = films.find(film => film.id === filmIdFromRoute);
+  }
+
+  getFilm(): void{
+    this.route.paramMap.subscribe((params) => {
+      // @ts-ignore
+      const id = +params.get('id');
+      this.loaded = false;
+      // @ts-ignore
+      this.albumService.getAlbum(id).subscribe((film) => {
+        this.film = film;
+        this.loaded = true;
+      });
+    });
+
   }
 
 }
