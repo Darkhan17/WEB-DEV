@@ -67,7 +67,7 @@ img{
 }
 
 .collectionWidget__buttons-wrap .head {
-  width: 224px;
+  width: 524px;
   float: left;
   border-radius: 0 0 0 2px;
 }
@@ -110,10 +110,13 @@ ul{
   list-style: none;
   padding-inline-start: 0px;
 }
+
+
 li{
   display: list-item;
 }
 .tabs-subpage__item{
+  background-color: #f8f8f8;
   margin-right: 5px;
   display: block;
   padding: 0 10px;
@@ -189,4 +192,14 @@ h1 {
 
 .genres:after{
   background-color: red;
+}
+
+iframe{
+  min-width: 500px;
+  height: 315px;
+  max-width: 700px;
+}
+
+a:hover{
+  color: red;
 }

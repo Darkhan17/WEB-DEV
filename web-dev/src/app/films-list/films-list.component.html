@@ -2,42 +2,44 @@
    <div class="container">
      <div class="main__container">
         <div class="filmList">
-          <div class="item">
+          <div class="item" *ngFor="let film of films">
+            <div class="sequence_checkbox_block">
+              {{film.id}}
+            </div>
             <div class="poster">
-              <img src="https://ru-images.kinorium.com/movie/180/472809.jpg?1588798924">
+              <img src="{{film.img}}">
             </div>
             <div class="filmList__movie__info">
               <div class="title">
-                <i class="movie__title-text"> Начало </i>
+                <i class="movie__title-text" [routerLink]="['/films',film.id]"> {{film.name}} </i>
               </div>
               <div class="info">
                   <div class="select-wrap">
                   <span class="filmList__small-text">
-                      Inception,2010
+                      {{film.second_name}}
                   </span>
                     <p class="filmList__extra-info">
-                      фантастика, боевик, триллер, 2 ч 28 мин
-                      США, Великобритания • Кристофер Нолан
+                     {{film.description}}
                     </p>
                     <div class="item__link-rating">
                       <ul class="rating">
                         <li class="rating--kino">
                           <div class="rating-name">Кинориум: </div>
-                          <span class="rating-vaue">8.8 </span>
+                          <span class="rating-vaue">{{film.kinorium}} </span>
                         </li>
                         <li class="rating--kino">
                           <div class="rating-name">IMDb: </div>
-                          <span class="rating-vaue">8.8 </span>
+                          <span class="rating-vaue">{{film.imbd}} </span>
                         </li>
                         <li class="rating--kino">
                           <div class="rating-name">Критики: </div>
-                          <span class="rating-vaue">80% </span>
+                          <span class="rating-vaue">{{film.critics}} </span>
                         </li>
                       </ul>
                     </div>
-                    <div class="statusWidgetData">
-                        <button class="add"> Добавить </button>
-                    </div>
+<!--                    <div class="statusWidgetData">-->
+<!--                        <button class="add"> Добавить </button>-->
+<!--                    </div>-->
                   </div>
               </div>
             </div>
