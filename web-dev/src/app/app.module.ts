@@ -8,11 +8,16 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import {MainContainerComponent} from './main-container/main-container.component';
 import { FilmsListComponent } from './films-list/films-list.component';
 import { AuthComponent } from './auth/auth.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
