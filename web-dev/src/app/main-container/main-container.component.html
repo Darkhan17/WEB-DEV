@@ -2,7 +2,7 @@
 
 <link href="https://fonts.googleapis.com/css?family=PT+Sans&amp;display=swap" rel="stylesheet">
 <style>
-   </style>
+</style>
 
 <div class="welcomeSlider">
   <div class="navigation">
@@ -23,7 +23,8 @@
   <div [ngClass]="{active: slide==='slide1'}" class="welcomeBanner welcomeGandalf">
     <div class="bannerContent"><h1>Мир кино</h1>
       <h2>Мгновенный поиск фильмов и удобный серфинг по базе данных.<br>Вы всегда будете в курсе, что и когда смотреть.
-      </h2> <a href="/list/" class="button welcome">ПОСМОТРЕТЬ СПИСКИ ФИЛЬМОВ</a></div>
+      </h2> <a [routerLink]="['/films/']" class="button welcome">ПОСМОТРЕТЬ СПИСКИ ФИЛЬМОВ</a></div>
+
   </div>
 
   <div [ngClass]="{active: slide==='slide2'}" class="welcomeBanner welcomeBatman">
@@ -47,4 +48,6 @@
   </div>
 </div>
 
-<div class="main-table-content"></div>
+
+
+

@@ -11,7 +11,7 @@
         <a class="link" rel="goto" data-goto="intAuth" tabindex="5" (click)="gotoAuth()">У меня уже есть аккаунт</a>
       </form>
 
-      <form [formGroup]="formLog" (submit)="submitLog()" *ngIf="dialog === 'intAuth'" class="intAuth dialog" data-dest="intAuth" autocomplete="on">
+      <form [formGroup]="formLog" *ngIf="dialog === 'intAuth'" class="intAuth dialog" data-dest="intAuth" autocomplete="on">
         <span class="topMenu__logo">Kinomir</span>
 
         <label name="email"> <input formControlName="email" type="email" name="email" placeholder="E-mail" autocomplete="on" tabindex="1">  </label>
@@ -26,17 +26,17 @@
 
         <a href="#" class="link" rel="goto" data-goto="lostPass">Не помню пароль</a>
       </form>
-      <form [formGroup]="formReg" (submit)="submitReg()" *ngIf="dialog === 'intReg'" class="intReg dialog" data-dest="intReg" autocomplete="off">
+      <form [formGroup]="formReg" *ngIf="dialog === 'intReg'" class="intReg dialog" data-dest="intReg" autocomplete="off">
         <span class="topMenu__logo">Kinomir</span>
         <div class="file_upload">
           <label for="avatarfile"> <img class="photo" src="https://images.kinorium.com/web/blank.png"> </label>
           <input type="file" id="avatarfile">
         </div>
 
-        <label name="name"> <input formControlName="name" type="textfield" placeholder="Имя" tabindex="1"> </label>
-
-        <label name="email"> <input formControlName="email" type="email" placeholder="E-mail" tabindex="3" autocomplete="off"> </label>
-        <label name="password"> <input formControlName="password" type="password" value="" class="pass"
+        <label name="name"> <input [(ngModel)]="iName" formControlName="name" type="textfield" placeholder="Имя" tabindex="1"> </label>
+        <label name="surname"> <input [(ngModel)]="iSurname" formControlName="surname" type="textfield" placeholder="Фамилия" tabindex="1"> </label>
+        <label name="email"> <input [(ngModel)]="iEmail" formControlName="email" type="email" placeholder="E-mail" tabindex="3" autocomplete="off"> </label>
+        <label name="password"> <input [(ngModel)]="iPassword" formControlName="password" type="password" value="" class="pass"
                                                                         autocomplete="off" autocapitalize="off"
                                                                         autocorrect="off" placeholder="Пароль"
                                                                         tabindex="4">
@@ -49,7 +49,11 @@
           <span>Готово</span>
         </button>
 
-        <a href="/agreement/" class="link" target="_blank">Регистрируясь, я принимаю условия пользования сервисом</a>
+        <a class="link">Ваши регистрационные данные: <br> "Имя: {{iName}}"
+          <br> "Фамилия: {{iSurname}}"
+          <br> "Email: {{iEmail}}"
+          <br> "Пароль: {{iPassword}}             "
+                                 </a>
 
       </form>
 

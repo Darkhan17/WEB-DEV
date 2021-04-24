@@ -21,10 +21,15 @@ export class AuthComponent implements OnInit {
 
   @Output() dialog = 'hello';
 
+  iName = '';
+  iSurname = '';
+  iEmail = '';
+  iPassword = '';
 
   ngOnInit(): void {
     this.formReg = this.formBuilderReg.group({
       name: '',
+      surname: '',
       email: '',
       password: ''
     });
@@ -35,14 +40,14 @@ export class AuthComponent implements OnInit {
   }
 
   submitReg(): void {
-    this.http.post('http://127.0.0.1:8000/api/register', this.formReg.getRawValue())
+    this.http.post('http://localhost:8000/api/register', this.formReg.getRawValue())
       .subscribe(res => {
         this.dialog = 'intRegFinished';
       });
   }
 
   submitLog(): void {
-    this.http.post('http://127.0.0.1:8000/api/login', this.formLog.getRawValue(), {
+    this.http.post('http://localhost:8000/api/login', this.formLog.getRawValue(), {
       withCredentials: true
     }).subscribe(() => this.router.navigate(['/home']));
   }

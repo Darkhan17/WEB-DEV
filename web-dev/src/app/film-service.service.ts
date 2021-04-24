@@ -20,7 +20,7 @@ export class FilmServiceService {
   }
   addFilm(film: Film): Observable<Film>{
     // @ts-ignore
-    return this.client.post(`${this.BASE_URL}/films`,film);
+    return this.client.post(`${this.BASE_URL}/films`, film);
   }
   updateFilm(film: Film): Observable<Film>{
     return this.client.put<Film>(`${this.BASE_URL}/films/${film.id}`, film);

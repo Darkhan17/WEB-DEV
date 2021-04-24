@@ -1,10 +1,8 @@
 <div class="toolbox"><span [routerLink]="['/']" class="topMenu__logo">Kinomir</span></div>
 <ul>
-  <li>Премьеры</li>
   <li [routerLink]="['/films/']">Все фильмы</li>
   <li>Сериалы</li>
   <li style="color: #595959;">•</li>
-  <li>Лента</li>
   <li>Видео</li>
   <li>Новости</li>
 </ul>
@@ -13,4 +11,7 @@
 
 <a href="#" title="Панель уведомлении" class="logo" id="notify-logo"></a>
 
-<button [routerLink]="['/auth/']" class="auth_button round_button bluebutton">Войти</button>
+<a href="#" title="Аккаунт" class="logo" id="acc-logo" *ngIf="authenticated"></a>
+
+<button [routerLink]="['/auth/']" class="auth_button round_button bluebutton" *ngIf="!authenticated">Войти</button>
+<button (click)="logout()" class="auth_button round_button bluebutton" *ngIf="authenticated">Выход</button>

@@ -48,7 +48,6 @@ body {
 #acc-logo {
   background: url(/../../assets/images/account.png) no-repeat 6px;
   background-size: 65%;
-  margin-right: 50px;
 }
 .logo:hover{
   width: 35px;

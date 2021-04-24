@@ -1,6 +1,7 @@
-body{
+body {
   max-width: 1312px;
 }
+
 .welcomeSlider {
   width: 100%;
   height: 550px;
@@ -136,6 +137,17 @@ body{
   }
 }
 
-.main-table-content{
-
+#flag {
+  font-size: 18px;
 }
+
+
+
+
+
+
+
+
+
+
+
