@@ -21,18 +21,4 @@ export const films = [
   },
 
 
-
-  {
-    id: 2,
-    name: 'Побег из Шоушенка',
-    second_name: 'The Shawshank Redemption, 1994',
-    img : 'https://ru-images.kinorium.com/movie/600/101209.jpg?1574409604',
-    description: 'драма, 2 ч 22 мин \n' +
-                  'США • Фрэнк Дарабонт',
-    kinorium: 9.2,
-    imbd: 9.3,
-    critics: 91,
-    country: 'США',
-
-  },
 ];
