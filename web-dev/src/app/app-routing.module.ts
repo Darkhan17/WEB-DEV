@@ -4,13 +4,15 @@ import {MainContainerComponent} from './main-container/main-container.component'
 import {FilmDetailComponent} from './film-detail/film-detail.component';
 import { FilmsListComponent } from './films-list/films-list.component';
 import {AuthComponent} from './auth/auth.component';
+import {SeriesListComponent} from './series-list/series-list.component';
 
 const routes: Routes = [
-  {path: 'home', component: MainContainerComponent},
-  {path: 'films/:filmId', component: FilmDetailComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: 'home', component: MainContainerComponent},
   {path: 'films', component: FilmsListComponent},
-  {path: 'auth', component: AuthComponent}
+  {path: 'films/:filmId', component: FilmDetailComponent},
+  {path: 'auth', component: AuthComponent},
+  {path: 'series', component: SeriesListComponent}
 ];
 
 @NgModule({

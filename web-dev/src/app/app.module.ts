@@ -10,6 +10,7 @@ import { FilmsListComponent } from './films-list/films-list.component';
 import { AuthComponent } from './auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { SeriesListComponent } from './series-list/series-list.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
     MainContainerComponent,
     FilmsListComponent,
     AuthComponent,
+    SeriesListComponent,
   ],
   bootstrap: [
     AppComponent
