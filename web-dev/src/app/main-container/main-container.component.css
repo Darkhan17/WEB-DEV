@@ -123,19 +123,19 @@ body {
   background: rgb(33, 176, 208);
 }
 
-@media all and (max-width: 1260px) {
-  .welcomeSlider {
-    height: 450px;
-  }
+/*@media all and (max-width: 1260px) {*/
+/*  .welcomeSlider {*/
+/*    height: 450px;*/
+/*  }*/
 
-  .welcomeBanner {
-    margin-top: -50px;
-  }
+/*  .welcomeBanner {*/
+/*    margin-top: -50px;*/
+/*  }*/
 
-  .welcomeSlider .navigation {
-    margin-top: 412px;
-  }
-}
+/*  .welcomeSlider .navigation {*/
+/*    margin-top: 412px;*/
+/*  }*/
+/*}*/
 
 #flag {
   font-size: 18px;
