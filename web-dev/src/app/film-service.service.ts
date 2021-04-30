@@ -9,14 +9,14 @@ import {Film} from './models';
 export class FilmServiceService {
 
   constructor(private client: HttpClient) { }
-  BASE_URL = 'http://localhost:4200';
+  BASE_URL = 'http://localhost:8000/film';
 
   getFilms(): Observable<Film[]>{
-    return this.client.get<Film[]>(`${this.BASE_URL}/films`);
+    return this.client.get<Film[]>(`${this.BASE_URL}/filmList`);
   }
 
-  getFilm(id: number): Observable<Film>{
-    return this.client.get<Film>(`${this.BASE_URL}/films/${id}`);
+  getFilm(filmId: number): Observable<Film>{
+    return this.client.get<Film>(`${this.BASE_URL}/${filmId}`);
   }
   addFilm(film: Film): Observable<Film>{
     // @ts-ignore

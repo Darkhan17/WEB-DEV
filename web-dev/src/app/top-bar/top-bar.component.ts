@@ -23,7 +23,7 @@ export class TopBarComponent implements OnInit {
   }
 
   logout(): void {
-    this.http.post('http://localhost:8000/api/logout', {}, {withCredentials: true})
+    this.http.post('http://127.0.0.1:8000/api/logout', {}, {withCredentials: true})
       .subscribe(() => this.authenticated = false);
   }
 }

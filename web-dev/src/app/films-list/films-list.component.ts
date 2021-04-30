@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {films} from '../films';
 import {FilmServiceService} from '../film-service.service';
+import {Film} from '../models';
+
 
 @Component({
   selector: 'app-films-list',
@@ -10,7 +11,7 @@ import {FilmServiceService} from '../film-service.service';
 })
 export class FilmsListComponent implements OnInit {
   // category;
-  films = films;
+  films: Film[] = [];
   loaded!: boolean;
   constructor(private route: ActivatedRoute,
               private filmService: FilmServiceService) {
@@ -20,6 +21,7 @@ export class FilmsListComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.getFilms();
   }
 
   getFilms(): void{

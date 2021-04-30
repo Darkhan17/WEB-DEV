@@ -9,9 +9,14 @@
 
 <input id="search" type="textfield" placeholder="Быстрый поиск">
 
+<ul *ngIf="authenticated">
+  <li>Мои заметки</li>
+</ul>
+
 <a href="#" title="Панель уведомлении" class="logo" id="notify-logo"></a>
 
 <a href="#" title="Аккаунт" class="logo" id="acc-logo" *ngIf="authenticated"></a>
+
 
 <button [routerLink]="['/auth/']" class="auth_button round_button bluebutton" *ngIf="!authenticated">Войти</button>
 <button (click)="logout()" class="auth_button round_button bluebutton" *ngIf="authenticated">Выход</button>

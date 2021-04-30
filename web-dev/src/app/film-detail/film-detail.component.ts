@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {films} from '../films';
 import {Film} from '../models';
+import {FilmServiceService} from "../film-service.service";
 
 @Component({
   selector: 'app-film-detail',
@@ -10,15 +10,15 @@ import {Film} from '../models';
 })
 export class FilmDetailComponent implements OnInit {
 
-  constructor( private route: ActivatedRoute) { }
+  constructor( private route: ActivatedRoute,
+               private filmService: FilmServiceService) { }
   // tslint:disable-next-line:max-line-length
   film: Film | undefined;
   status = 'film';
   loaded!: boolean;
+
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const filmIdFromRoute = Number(routeParams.get('filmId'));
-    this.film = films.find(film => film.id === filmIdFromRoute);
+    this.getFilm();
   }
 
   getFilm(): void{
@@ -26,8 +26,9 @@ export class FilmDetailComponent implements OnInit {
       // @ts-ignore
       const id = +params.get('id');
       this.loaded = false;
+      console.log(id);
       // @ts-ignore
-      this.albumService.getAlbum(id).subscribe((film) => {
+      this.filmService.getFilm(id).subscribe((film) => {
         this.film = film;
         this.loaded = true;
       });
