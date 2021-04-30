@@ -34,3 +34,24 @@ class FilmSerializer(serializers.Serializer):
     ruPremiere = serializers.CharField(max_length=200)
     otherName = serializers.CharField(max_length=400)
     genres = serializers.StringRelatedField(many=True)
+
+    def create(self, validated_data):
+        film = Film.objects.create(name = validated_data['name'],
+                                   img = validated_data['img'],
+                                   secondName = validated_data['seconName'],
+                                   description = validated_data['description'],
+                                   kinorium = validated_data['kinorium'],
+                                   imbd = validated_data['imbd'],
+                                   critics = validated_data['critics'],
+                                   country = validated_data['country'],
+                                   time = validated_data['time'],
+                                   worldPremiere = validated_data['worldPremiere'],
+                                   usaPremiere = validated_data['usaPremiere'],
+                                   ruPremiere = validated_data['ruPremiere'],
+                                   otherName = validated_data['otherName'],
+                                   genres = validated_data['genres'])
+        return film
+    def update(self, instance, validated_data):
+        instance.name = validated_data['name']
+        instance.save()
+        return instance
