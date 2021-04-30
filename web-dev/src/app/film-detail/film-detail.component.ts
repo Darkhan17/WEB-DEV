@@ -13,7 +13,7 @@ export class FilmDetailComponent implements OnInit {
   constructor( private route: ActivatedRoute,
                private filmService: FilmServiceService) { }
   // tslint:disable-next-line:max-line-length
-  film: Film | undefined;
+  film!: Film;
   status = 'film';
   loaded!: boolean;
 
@@ -24,7 +24,7 @@ export class FilmDetailComponent implements OnInit {
   getFilm(): void{
     this.route.paramMap.subscribe((params) => {
       // @ts-ignore
-      const id = +params.get('id');
+      const id = +params.get('filmId');
       this.loaded = false;
       console.log(id);
       // @ts-ignore

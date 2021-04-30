@@ -33,4 +33,4 @@ class FilmSerializer(serializers.Serializer):
     usaPremiere = serializers.CharField(max_length=200)
     ruPremiere = serializers.CharField(max_length=200)
     otherName = serializers.CharField(max_length=400)
-    genres = GenreSerializer()
+    genres = serializers.StringRelatedField(many=True)
