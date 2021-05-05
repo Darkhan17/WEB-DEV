@@ -7,8 +7,8 @@ from django.http.response import HttpResponse, JsonResponse
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .models import Film,Genre
-from .serializers import FilmSerializer,GenreSerializer
+from .models import Film,Genre,Comment
+from .serializers import FilmSerializer,GenreSerializer,CommentSerializer,CommentSerializer2
 
 
 
@@ -29,7 +29,7 @@ def filmsList(request):
         return Response(serializer.errors)
 
 
-@api_view(['GET','PUT','DELETE'])
+@api_view(['GET','POST','DELETE'])
 def filmDetail(request, filmId):
     try:
         film = Film.objects.get(id = filmId)
@@ -50,4 +50,36 @@ def filmDetail(request, filmId):
         Response({'message': 'deleted'}, status=404)
 
 
+@api_view(['GET', 'POST'])
+def getComments(request, filmId):
 
+    try:
+        film = Film.objects.get(id=filmId)
+    except Film.DoesNotExist as e:
+        return Response({'message': str(e)}, status=400)
+
+    if request.method == 'GET':
+        serializer = CommentSerializer(film.comments.all(), many=True)
+        return Response(serializer.data)
+
+    elif request.method == 'POST':
+        serializer = CommentSerializer2(data=request.data)
+        print(serializer.initial_data)
+        print(serializer.is_valid())
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+@api_view(['DELETE'])
+def deleteComment(request, commentId):
+    if request.method == "GET":
+        try:
+            comment = Comment.objects.get(id = commentId)
+        except Comment.DoesNotExist as e:
+            return Response({'message':str(e)}, status=400)
+
+    elif request.method == 'DELETE':
+        comment = Comment.objects.get(id=commentId)
+        comment.delete()
+        return Response({'Message: deleted'},status=204)

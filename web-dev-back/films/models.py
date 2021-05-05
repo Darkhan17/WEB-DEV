@@ -1,5 +1,5 @@
 from django.db import models
-
+from users.models import User
 # Create your models here.
 
 class Genre(models.Model):
@@ -30,3 +30,11 @@ class Film(models.Model):
 
 
 
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    film = models.ForeignKey(Film, related_name='comments', on_delete=models.CASCADE)
+    body = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return '%s - %s - %s' % (self.id ,self.film.name, self.user.name)

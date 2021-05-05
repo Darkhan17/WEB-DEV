@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { SeriesListComponent } from './series-list/series-list.component';
+import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   imports: [
@@ -28,6 +29,7 @@ import { SeriesListComponent } from './series-list/series-list.component';
     FilmsListComponent,
     AuthComponent,
     SeriesListComponent,
+    CommentsComponent,
   ],
   bootstrap: [
     AppComponent

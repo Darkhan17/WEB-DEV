@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Emitters} from './emitters/emitters';
 import {HttpClient} from '@angular/common/http';
+import {FilmServiceService} from './film-service.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ export class AppComponent implements OnInit {
   side = 'light';
   flag = '';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private filmService: FilmServiceService) {
   }
 
   changeSide(): void {
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit {
         console.log(res);
         this.flag = `Hi ${res.name}`;
         Emitters.authEmitter.emit(true);
+        this.filmService.changeMessage(res);
       },
       err => {
         this.flag = '';

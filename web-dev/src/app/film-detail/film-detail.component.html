@@ -85,4 +85,36 @@
       </section>
     </div>
   </div>
+  <div class="comment comment_container">
+    <h2> Comments: </h2>
+    <div *ngFor="let commet of comments">
+      <br>
+    <strong>
+      {{commet.user.email}} - {{commet.date}}
+    </strong>
+      <br/>
+      <div>
+      <p>
+        {{commet.body}}
+        <button  class="tabs-subpage__item" (click)="deleteComment(commet.id)" *ngIf="user.id == commet.user.id">Delete</button>
+      </p>
+      </div>
+    </div>
+  </div>
+  <div class="comment_form">
+    <div class="comment_container">
+      <div class="container">
+        <div class="container1">
+          <form action="action_page.php">
+
+            <label for="subject">Type comment here</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px" [(ngModel)]="body"></textarea>
+
+            <input type="submit" value="Submit" (click)="addComment()">
+
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

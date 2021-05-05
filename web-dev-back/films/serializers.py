@@ -1,5 +1,8 @@
 from rest_framework import serializers
-from .models import Genre,Film
+from .models import Genre,Film, Comment
+from users.serializers import UserSerializer
+from users.models import User
+
 
 class GenreSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
@@ -55,3 +58,15 @@ class FilmSerializer(serializers.Serializer):
         instance.name = validated_data['name']
         instance.save()
         return instance
+
+class CommentSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    class Meta:
+        model = Comment
+        fields = ['id', 'user','film', 'body', 'date']
+
+
+class CommentSerializer2(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'user','film', 'body', 'date']

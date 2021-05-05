@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Film} from '../models';
-import {FilmServiceService} from "../film-service.service";
+import {Film, Comment, User, Comment2} from '../models';
+import {FilmServiceService} from '../film-service.service';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-film-detail',
@@ -16,8 +17,12 @@ export class FilmDetailComponent implements OnInit {
   film!: Film;
   status = 'film';
   loaded!: boolean;
+  comments: Comment[] = [];
+  body: string | undefined;
+  user!: User;
 
   ngOnInit(): void {
+    this.filmService.currentMessage.subscribe(user => this.user = user);
     this.getFilm();
   }
 
@@ -32,8 +37,37 @@ export class FilmDetailComponent implements OnInit {
         this.film = film;
         this.loaded = true;
       });
+      this.getComments(id);
     });
+  }
 
+  getComments(id: number): void{
+    this.loaded = false;
+    this.filmService.getCommnets(id).subscribe(comments => {
+      this.comments = comments;
+      this.loaded = true;
+    });
+  }
+  addComment(): void{
+    console.log(this.user);
+    const comment =  {
+      user: this.user.id,
+      film: this.film.id,
+      body: this.body,
+    };
+    // @ts-ignore
+    this.filmService.addComment(comment as Comment, this.film.id).subscribe(comment => {
+      this.comments.push(comment);
+      this.body = '';
+      });
+    this.getComments(this.film.id);
+  }
+
+  deleteComment(id: number): void{
+    this.filmService.deleteComment(id).subscribe(() => {
+      console.log(id , 'deleted');
+    });
+    this.comments = this.comments.filter((x: Comment) => x.id !== id);
   }
 
 }
