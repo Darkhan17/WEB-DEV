@@ -12,6 +12,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { SeriesListComponent } from './series-list/series-list.component';
 import { CommentsComponent } from './comments/comments.component';
+import { FavoritelistComponent } from './favoritelist/favoritelist.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { CommentsComponent } from './comments/comments.component';
     AuthComponent,
     SeriesListComponent,
     CommentsComponent,
+    FavoritelistComponent,
   ],
   bootstrap: [
     AppComponent

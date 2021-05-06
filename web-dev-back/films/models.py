@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.db import models
 from users.models import User
+
+
 # Create your models here.
 
 class Genre(models.Model):
@@ -8,10 +11,11 @@ class Genre(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+
 class Film(models.Model):
     name = models.CharField(max_length=300)
     img = models.CharField(max_length=1000)
-    secondName  = models.CharField(max_length=300)
+    secondName = models.CharField(max_length=300)
     description = models.TextField()
     kinorium = models.FloatField()
     imbd = models.FloatField()
@@ -24,10 +28,8 @@ class Film(models.Model):
     otherName = models.CharField(max_length=400)
     genres = models.ManyToManyField(Genre)
 
-
     def __str__(self):
         return f'{self.id} : {self.name}'
-
 
 
 class Comment(models.Model):
@@ -37,4 +39,9 @@ class Comment(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return '%s - %s - %s' % (self.id ,self.film.name, self.user.name)
+        return '%s - %s - %s' % (self.id, self.film.name, self.user.name)
+
+
+class FavoriteFilm(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorites')
+    name = models.CharField(max_length=300)

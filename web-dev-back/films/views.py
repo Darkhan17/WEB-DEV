@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 
@@ -7,19 +9,19 @@ from django.http.response import HttpResponse, JsonResponse
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .models import Film,Genre,Comment
-from .serializers import FilmSerializer,GenreSerializer,CommentSerializer,CommentSerializer2
-
+from users.models import User
+from .models import Film, Genre, Comment, FavoriteFilm
+from .serializers import FilmSerializer, GenreSerializer, CommentSerializer, CommentSerializer2, FavoriteFilmSerializer
 
 
 # Create your views here.
 
 
-@api_view(['GET','POST'])
+@api_view(['GET', 'POST'])
 def filmsList(request):
     if request.method == 'GET':
         films = Film.objects.all()
-        serializer = FilmSerializer(films,many=True)
+        serializer = FilmSerializer(films, many=True)
         return Response(serializer.data)
     elif request.method == 'POST':
         serializer = FilmSerializer(data=request.data)
@@ -29,10 +31,10 @@ def filmsList(request):
         return Response(serializer.errors)
 
 
-@api_view(['GET','POST','DELETE'])
+@api_view(['GET', 'POST', 'DELETE'])
 def filmDetail(request, filmId):
     try:
-        film = Film.objects.get(id = filmId)
+        film = Film.objects.get(id=filmId)
     except Film.DoesNotExist as e:
         return Response({'message': str(e)}, status=400)
 
@@ -40,19 +42,18 @@ def filmDetail(request, filmId):
         serializer = FilmSerializer(film)
         return Response(serializer.data)
     elif request.method == 'PUT':
-        serializer = FilmSerializer(instance=film, data=request.data)
+        serializer = FilmSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors)
-    elif request == 'DELETE':
+    elif request.method == 'DELETE':
         film.delete()
-        Response({'message': 'deleted'}, status=404)
+        return Response({'message': 'deleted'}, status=404)
 
 
 @api_view(['GET', 'POST'])
 def getComments(request, filmId):
-
     try:
         film = Film.objects.get(id=filmId)
     except Film.DoesNotExist as e:
@@ -71,15 +72,58 @@ def getComments(request, filmId):
             return Response(serializer.data)
         return Response(serializer.errors)
 
+
 @api_view(['DELETE'])
 def deleteComment(request, commentId):
     if request.method == "GET":
         try:
-            comment = Comment.objects.get(id = commentId)
+            comment = Comment.objects.get(id=commentId)
         except Comment.DoesNotExist as e:
-            return Response({'message':str(e)}, status=400)
+            return Response({'message': str(e)}, status=400)
 
     elif request.method == 'DELETE':
         comment = Comment.objects.get(id=commentId)
         comment.delete()
-        return Response({'Message: deleted'},status=204)
+        return Response({'Message: deleted'}, status=204)
+
+
+@api_view(['GET', 'POST'])
+def favoritefilms(request, userId):
+    if request.method == 'GET':
+        user = User.objects.get(id=userId)
+        films = user.favorites.all()
+        serializer = FavoriteFilmSerializer(films, many=True)
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        serializer = FavoriteFilmSerializer(data=request.data)
+        print(serializer)
+        print(serializer.is_valid())
+        print(serializer.errors)
+        if serializer.is_valid():
+            print('valid')
+            serializer.save(author=User.objects.get(id=userId))
+            return Response(serializer.data)
+        return Response(serializer.errors)
+
+
+@api_view(['GET', 'PUT', 'DELETE'])
+def favoritefilm(request, userId, filmId):
+    try:
+        user = User.objects.get(id=userId)
+        films = user.favorites.all()
+        film = films.get(id=filmId)
+    except FavoriteFilm.DoesNotExist as e:
+        return Response({'message': str(e)}, status=400)
+
+    if request.method == 'GET':
+        serializer = FavoriteFilmSerializer(film)
+        return Response(serializer.data)
+    elif request.method == 'PUT':
+        serializer = FavoriteFilmSerializer(instance=film, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+    elif request.method == 'DELETE':
+        film.delete()
+        return Response({'message': 'deleted'}, status=404)

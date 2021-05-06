@@ -24,26 +24,25 @@
     <div class="bannerContent"><h1>Мир кино</h1>
       <h2>Мгновенный поиск фильмов и удобный серфинг по базе данных.<br>Вы всегда будете в курсе, что и когда смотреть.
       </h2> <a [routerLink]="['/films/']" class="button welcome">ПОСМОТРЕТЬ СПИСКИ ФИЛЬМОВ</a></div>
-
   </div>
 
   <div [ngClass]="{active: slide==='slide2'}" class="welcomeBanner welcomeBatman">
     <div class="bannerContent"><h1>Полное погружение</h1>
       <h2>В Кинориуме вы можете отмечать фильмы, ставить оценки и <br>обмениваться впечатлениями с друзьями.</h2> <a
-        href="#" class="button welcome" onclick="authWindow(); return false;">ВОЙТИ В КИНОРИУМ</a></div>
+         class="button welcome" >ВОЙТИ В КИНОРИУМ</a></div>
   </div>
   <div [ngClass]="{active: slide==='slide3'}" class="welcomeBanner welcomeVeider">
     <div class="bannerContent"><h1>Лента друзей</h1>
       <h2>Следите за фильмами, которые смотрят друзья, и делитесь своими <br>впечатлениями с ними.</h2> <a
-        href="/user/settings/#searchFriends" class="button welcome"
-        onclick="authWindow(false,false,&quot;/user/settings/#searchFriends&quot;); return false;">НАЙТИ ДРУЗЕЙ</a>
+        class="button welcome"
+        >НАЙТИ ДРУЗЕЙ</a>
     </div>
   </div>
   <div [ngClass]="{active: slide==='slide4'}" class="welcomeBanner welcomeVoldemort">
     <div class="bannerContent"><h1>Быстрый старт</h1>
       <h2> Если у вас есть профиль на Кинопоиске, IMDb или myShows, то вы легко и <br> быстро можете перенести все свои
-        оценки в Кинориум. </h2> <a href="/user/settings/#importVotes" class="button welcome"
-                                    onclick="authWindow(false,false,&quot;/user/settings/#importVotes&quot;); return false;">ИМПОРТИРОВАТЬ
+        оценки в Кинориум. </h2> <a class="button welcome"
+                                    >ИМПОРТИРОВАТЬ
         ОЦЕНКИ</a></div>
   </div>
 </div>

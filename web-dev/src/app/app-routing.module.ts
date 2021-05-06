@@ -6,6 +6,7 @@ import { FilmsListComponent } from './films-list/films-list.component';
 import {AuthComponent} from './auth/auth.component';
 import {SeriesListComponent} from './series-list/series-list.component';
 import {CommentsComponent} from './comments/comments.component';
+import {FavoritelistComponent} from './favoritelist/favoritelist.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'films/:filmId', component: FilmDetailComponent},
   {path: 'auth', component: AuthComponent},
   {path: 'series', component: SeriesListComponent},
-  {path: 'films/:filmId/comments/:commentId', component: CommentsComponent}
+  {path: 'films/:filmId/comments/:commentId', component: CommentsComponent},
+  {path: 'favoritelist', component: FavoritelistComponent},
 ];
 
 @NgModule({

@@ -1,6 +1,6 @@
 import DateTimeFormat = Intl.DateTimeFormat;
 
-export interface Film{
+export interface Film {
   id: number;
   name: string;
   img: string;
@@ -20,7 +20,7 @@ export interface Film{
 }
 
 
-export interface Comment{
+export interface Comment {
   id: number;
   film: number;
   user: User;
@@ -28,7 +28,7 @@ export interface Comment{
   date: DateTimeFormat;
 }
 
-export interface Comment2{
+export interface Comment2 {
   id: number;
   film: number;
   user: number;
@@ -36,10 +36,14 @@ export interface Comment2{
   date: DateTimeFormat;
 }
 
-export interface User{
+export interface User {
   id: number;
   name: string;
   email: string;
 }
 
-
+export interface FavoriteFilm {
+  id: number;
+  author: string;
+  name: string;
+}

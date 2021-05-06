@@ -10,7 +10,7 @@
 <input id="search" type="textfield" placeholder="Быстрый поиск">
 
 <ul *ngIf="authenticated">
-  <li>Мои заметки</li>
+  <li [routerLink]="['/favoritelist']">Избранное</li>
 </ul>
 
 <a href="#" title="Панель уведомлении" class="logo" id="notify-logo"></a>
